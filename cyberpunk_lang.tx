@@ -1,0 +1,47 @@
+Program:
+    statements*=Statement
+;
+
+Statement:
+    VarDeclaration | PrintStatement | ForLoop | WhileLoop | IfStatement
+;
+
+VarDeclaration:
+    'upload' name=ID 'with value' value=Expr 
+;
+
+PrintStatement:
+    'broadcast' expr=Expr
+;
+
+IfStatement:
+    'if this data' condition=Comparison 'checks out,' ifBody*=Statement ';' elseIfBlocks*=ElseIfBlock ('otherwise' ',' elseBody=Statement '.')?
+;
+
+ElseIfBlock:
+    'if not try' condition=Comparison ',' elseIfBody*=Statement ';'
+;
+
+ForLoop:
+    'got a gig for you' var=ID 'gotta go from' start=Expr 'to' end=Expr ',' forBody*=Statement '.'
+;
+
+WhileLoop:
+    'run diagnostic while' condition=Comparison 'holds,' whileBody*=Statement '.'
+;
+
+Expr:
+    Term (('+' | '-' | '*' | '/' | '%') Term)*
+;
+
+Comparison:
+    left=Expr relOp=RelOp right=Expr
+;
+
+RelOp:
+    '==' | '!=' | '<=' | '>=' | '<' | '>'
+;
+
+Term:
+    INT | ID | FLOAT | BOOL
+;
