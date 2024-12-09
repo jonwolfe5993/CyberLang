@@ -31,7 +31,7 @@ WhileLoop:
 ;
 
 Expr:
-    Term (('+' | '-' | '*' | '/' | '%') Term)* | String //Expressions can contain a term with '+, -, *, /, %' operators or a string
+    Term (('+' | '-' | '*' | '/' | '%') Term)* | String //Expressions can contain a term, 0 or more '+, -, *, /, %' operators with another term, or a string
 ;
 
 Comparison:
