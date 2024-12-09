@@ -1,8 +1,6 @@
 from textx import metamodel_from_file
-
 #Load textX metamodel from .tx file
 metaModel = metamodel_from_file('cyberpunk_lang.tx')
-
 #Load input file
 fileName = input('Enter the file name: ')
 try:
@@ -87,6 +85,6 @@ def executeStatement(statement):
     elif statement.__class__.__name__ == 'WhileLoop':
         executeWhileLoop(statement)
         
-#Execute each statement in the model
+#Execute each statement within program
 for statement in model.statements:
     executeStatement(statement)
