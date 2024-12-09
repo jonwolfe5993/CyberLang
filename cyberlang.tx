@@ -47,5 +47,5 @@ Term:
 ;
 
 String:
-    /"[^"]*"/ //Used to determine if an arguement is a string within quotes
+    /"[a-zA-Z0-9 ]*"/ //Used to determine if an arguement is a string within quotes
 ;
