@@ -1,51 +1,51 @@
 Program:
-    statements*=Statement
+    statements*=Statement //Program is made up of 0 or more statements
 ;
 
 Statement:
-    VarDeclaration | PrintStatement | ForLoop | WhileLoop | IfStatement
+    VarDeclaration | PrintStatement | ForLoop | WhileLoop | IfStatement //Each statement can be a variable declaration, print statement, for/while loop, or an if statement
 ;
 
 VarDeclaration:
-    'upload' name=ID 'with value' value=Expr 
+    'upload' name=ID 'with value' value=Expr //A variable declaration follows the format upload 'variable' with value 'value'. Example: upload h with value 10 will create variable h with a value of 10
 ;
 
 PrintStatement:
-    'broadcast' expr=Expr
+    'broadcast' expr=Expr //A print statement follows the format broadcast 'expression'. Examples broadcast 10 * 2/ x * y would return 20 or whatever value x * y would give. broadcast "hello world" would return hello world
 ;
 
 IfStatement:
-    'if this data' condition=Comparison 'checks out,' ifBody*=Statement ';' elseIfBlocks*=ElseIfBlock ('otherwise' ',' elseBody=Statement '.')?
-;
-
+    'if this data' condition=Comparison 'checks out,' ifBody+=Statement ';' elseIfBlocks+=ElseIfBlock ('otherwise' ',' elseBody=Statement '.')? //If statements follow format of if this data 'condition' checks out, 'body of if statement'; 
+;                                                                                                                                               //followed by 01 or more else if blocks: if not try 'condition', 'body of the else if block';
+                                                                                                                                                //finally followed by an optional else body: otherwise, 'body of else block'.
 ElseIfBlock:
-    'if not try' condition=Comparison ',' elseIfBody*=Statement ';'
+    'if not try' condition=Comparison ',' elseIfBody+=Statement ';' // elseif blocks follow format: if not try 'condtion', 'elseIfBody'; where the elseIfBody is made up of 1 or more statements
 ;
 
 ForLoop:
-    'got a gig for you' var=ID 'gotta go from' start=Expr 'to' end=Expr ',' forBody*=Statement '.'
-;
+    'got a gig for you' var=ID 'gotta go from' start=Expr 'to' end=Expr ',' forBody+=Statement '.' //For loops follow format: got a gig for you 'variable' gotta go from 'start' to 'end', 'body of for loop'
+;                                                                                                  //body of for loop can be made up of 1 or more statements
 
 WhileLoop:
-    'run diagnostic while' condition=Comparison 'holds,' whileBody*=Statement '.'
+    'run diagnostic while' condition=Comparison 'holds,' whileBody+=Statement '.' //While loops follow format: run diagnostic while 'condition' holds, 'body of while loop' 
 ;
 
 Expr:
-    Term (('+' | '-' | '*' | '/' | '%') Term)* | String
+    Term (('+' | '-' | '*' | '/' | '%') Term)* | String //Expressions can contain a term with '+, -, *, /, %' operators or a string
 ;
 
 Comparison:
-    left=Expr relOp=RelOp right=Expr
+    left=Expr relOp=RelOp right=Expr //Used to acquire the left side of a relational operator, the relational operator, and the right side of a relational operator, where the left and right sides can contain an expression
 ;
 
 RelOp:
-    '==' | '!=' | '<=' | '>=' | '<' | '>'
+    '==' | '!=' | '<=' | '>=' | '<' | '>' //Relational operators used for comparison
 ;
 
 Term:
-    INT | ID | FLOAT | BOOL
+    INT | ID | FLOAT | BOOL //A term is made up of either an int, string, float, or bool
 ;
 
 String:
-    /"[^"]*"/
+    /"[^"]*"/ //Used to determine if an arguement is a string within quotes
 ;

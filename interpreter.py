@@ -1,6 +1,6 @@
 from textx import metamodel_from_file
 #Load textX metamodel from .tx file
-metaModel = metamodel_from_file('cyberpunk_lang.tx')
+metaModel = metamodel_from_file('cyberlang.tx')
 #Load input file
 fileName = input('Enter the file name: ')
 try:
