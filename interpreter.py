@@ -36,7 +36,7 @@ def executeForLoop(forLoop):
     loopVar = forLoop.var
     start = evalExpression(forLoop.start)
     end = evalExpression(forLoop.end)
-    #Execute the loop
+    #Execute the for loop
     for value in range(start, end + 1):
         #Assign loop variable to the current value
         varMap[loopVar] = value  
