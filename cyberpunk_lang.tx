@@ -31,7 +31,7 @@ WhileLoop:
 ;
 
 Expr:
-    Term (('+' | '-' | '*' | '/' | '%') Term)*
+    Term (('+' | '-' | '*' | '/' | '%') Term)* | String
 ;
 
 Comparison:
@@ -44,4 +44,8 @@ RelOp:
 
 Term:
     INT | ID | FLOAT | BOOL
+;
+
+String:
+    /"[^"]*"/
 ;
