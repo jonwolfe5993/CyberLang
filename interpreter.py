@@ -56,12 +56,10 @@ def executeIfStatement(ifStatement):
     if evalExpression(ifStatement.condition):
         for statement in ifStatement.ifBody:
             executeStatement(statement)
-        return
     for elseIfBlock in ifStatement.elseIfBlocks:
         if evalExpression(elseIfBlock.condition):
             for statement in elseIfBlock.elseIfBody:
                 executeStatement(statement)
-            return
     if ifStatement.elseBody:
         executeStatement(ifStatement.elseBody)
 
